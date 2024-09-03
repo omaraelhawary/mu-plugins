@@ -1,9 +1,9 @@
 <?php
 
 /**
- * Registers custom post types for the university.
+ * Registers custom post types for the university website.
  *
- * This function registers the 'event', 'program', 'professor', 'campus', and 'note' post types.
+ * This function defines the post types for events, programs, professors, campuses, notes, likes, and sliders.
  * Each post type has its own set of labels, capabilities, and supports.
  *
  * @return void
@@ -107,7 +107,7 @@ function university_post_types(){
 
     register_post_type('like', array(
         'supports' => array('title'),
-        'rewrite'=> array('slug'=>'note'),
+        'rewrite'=> array('slug'=>'like'),
         'public' => false,
         'labels' => array(
             'name' => 'Likes',
@@ -120,6 +120,25 @@ function university_post_types(){
             'search_items' => 'Search Likes'
         ),
         'menu_icon' => 'dashicons-heart',
+    ));
+
+    register_post_type('slider', array(
+        'supports' => array('title', 'editor', 'thumbnail'),
+        'rewrite'=> array('slug'=>'slider'),
+        'public' => false,
+        'labels' => array(
+            'name' => 'Sliders',
+            'add_new_item' => 'Add New Slider',
+            'edit_item' => 'Edit Slider',
+            'all_itmes' => 'All Sliders',
+            'singular_name' => 'Slider',
+            'view_items' => 'View Sliders',
+            'add_new' => 'Add New Slider',
+            'search_items' => 'Search Sliders'
+        ),
+        'menu_icon' => 'dashicons-slides',
+        'show_ui' => true,
+        'show_in_rest' => true
     ));
     
 }
